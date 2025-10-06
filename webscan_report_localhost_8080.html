@@ -1,0 +1,122 @@
+
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>WebScanPro Report - http://localhost:8080</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 8px; }
+    th { background: #f4f4f4; }
+    .High { color: #a94442; font-weight: bold; }
+    .Medium { color: #8a6d3b; }
+    .Low { color: #3c763d; }
+  </style>
+</head>
+<body>
+  <h1>WebScanPro Report</h1>
+  <p><strong>Target:</strong> http://localhost:8080</p>
+  <p><strong>Date:</strong> 2025-10-06 07:09:15 UTC</p>
+
+  <h2>Findings (9)</h2>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Type</th>
+        <th>Endpoint / URL</th>
+        <th>Parameter / Field</th>
+        <th>Payload / Value</th>
+        <th>Evidence / Error / Issues</th>
+        <th>Severity</th>
+      </tr>
+    </thead>
+    <tbody>
+      
+      <tr>
+        <td>SQLi-FORM</td>
+        <td>http://localhost:8080/vulnerabilities/brute</td>
+        <td>username</td>
+        <td>1&#39;--</td>
+        <td>SQL error matched: you have an error in your sql syntax;</td>
+        <td class="High">High</td>
+      </tr>
+      
+      <tr>
+        <td>SQLi-FORM</td>
+        <td>http://localhost:8080/vulnerabilities/brute</td>
+        <td>username</td>
+        <td>&#39; UNION SELECT NULL--</td>
+        <td>SQL error matched: you have an error in your sql syntax;</td>
+        <td class="High">High</td>
+      </tr>
+      
+      <tr>
+        <td>SQLi-FORM</td>
+        <td>http://localhost:8080/vulnerabilities/sqli</td>
+        <td>id</td>
+        <td>1&#39;--</td>
+        <td>SQL error matched: you have an error in your sql syntax;</td>
+        <td class="High">High</td>
+      </tr>
+      
+      <tr>
+        <td>SQLi-FORM</td>
+        <td>http://localhost:8080/vulnerabilities/sqli</td>
+        <td>id</td>
+        <td>&#39; UNION SELECT NULL--</td>
+        <td>SQL error matched: you have an error in your sql syntax;</td>
+        <td class="High">High</td>
+      </tr>
+      
+      <tr>
+        <td>XSS-FORM</td>
+        <td>http://localhost:8080/vulnerabilities/xss_r</td>
+        <td>name</td>
+        <td>&lt;script&gt;alert(1)&lt;/script&gt;</td>
+        <td>Payload reflected in response</td>
+        <td class="High">High</td>
+      </tr>
+      
+      <tr>
+        <td>XSS-FORM</td>
+        <td>http://localhost:8080/vulnerabilities/xss_r</td>
+        <td>name</td>
+        <td>&lt;img src=x onerror=alert(1)&gt;</td>
+        <td>Payload reflected in response</td>
+        <td class="High">High</td>
+      </tr>
+      
+      <tr>
+        <td>XSS-FORM</td>
+        <td>http://localhost:8080/vulnerabilities/xss_r</td>
+        <td>name</td>
+        <td>&lt;svg onload=alert(1)&gt;</td>
+        <td>Payload reflected in response</td>
+        <td class="High">High</td>
+      </tr>
+      
+      <tr>
+        <td>Cookie-Issues</td>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+        <td>Missing HttpOnly, Missing Secure, Missing SameSite</td>
+        <td class="Low">Low</td>
+      </tr>
+      
+      <tr>
+        <td>Access-Control</td>
+        <td>http://localhost:8080/vulnerabilities/</td>
+        <td>-</td>
+        <td>-</td>
+        <td>Accessible without auth (HTTP 200)</td>
+        <td class="Low">Low</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  
+</body>
+</html>
